@@ -1,0 +1,43 @@
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    'plugin:@typescript-eslint/recommended',
+    'plugin:react-hooks/recommended'
+  ],
+  ignorePatterns: ['dist', '.eslintrc.cjs'],
+  parser: '@typescript-eslint/parser',
+  plugins: ['react-refresh'],
+  rules: {
+    'react-refresh/only-export-components': [
+      'warn',
+      { allowConstantExport: true },
+    ],
+    "react/prop-types": 0,
+    "indent": ["error", 2],
+    "linebreak-style": 1,
+    "quotes": ["error", "double"],
+    "camelcase": "error",
+    "eqeqeq": "error",
+    "no-alert": "error",
+    "no-delete-var": "error",
+    "no-empty": "error",
+    "no-empty-function": "error",
+    "no-eq-null": "error",
+    "no-lone-blocks": "error",
+    "no-var": "error",
+    "prefer-const": "error",
+    "key-spacing": ["error", { "beforeColon": false, "afterColon": true }],
+    "no-duplicate-imports": "error",
+    "no-magic-numbers": "off",
+    "no-new-func": "error",
+    "no-redeclare": "error",
+    "no-sparse-arrays": "error",
+    "no-shadow": 0,
+    "prefer-object-spread": "error",
+    "space-in-parens": ["error", "never"],
+    "semi": ["error", "always"],
+    "no-useless-escape": "off"
+  },
+}

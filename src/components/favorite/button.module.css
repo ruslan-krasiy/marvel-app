@@ -1,0 +1,10 @@
+.favorite-btn{
+  outline: none;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  padding: .25rem;
+  display: flex;
+  justify-content: center;
+  min-width: 23px;
+}

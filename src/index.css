@@ -1,6 +1,9 @@
 :root {
   --screen-width: 1400px;
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  --main-color: #000;
+  --typography-color: #000;
+  --typography-color-dark: #fff;
+  font-family: RobotoCondensed;
   line-height: 1.5;
   font-weight: 400;
 
@@ -12,6 +15,11 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+@font-face{
+  font-family: "RobotoCondensed";
+  src: url("/font/RobotoCondensed.ttf") format("opentype");
 }
 
 a {
@@ -41,14 +49,19 @@ h1 {
 }
 
 header {
-  background-color: black;
+  padding: 16px 0;
+  background-color: var(--main-color);
 }
 
 main {
   width: 100%;
   flex-grow: 1;
+  padding: 48px 0;
 }
 
+img{
+  max-width: 100%;
+}
 
 @media (prefers-color-scheme: light) {
   :root {
@@ -58,13 +71,4 @@ main {
   a:hover {
     color: #747bff;
   }
-  button {
-    background-color: #f9f9f9;
-  }
 }
-
-/* @media (max-width: 1400px) {
-  #root {
-    max-width: 100%;
-  }
-} */

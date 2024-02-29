@@ -1,0 +1,36 @@
+.list {
+  display: grid;
+  grid-template-columns: repeat(14, minmax(auto, 93px));
+  gap: .8rem;
+}
+
+@media only screen and (max-width: 1280px) {
+  .list {
+    grid-template-columns: repeat(10, 1fr);
+
+  }
+}
+
+
+@media only screen and (max-width: 991px) {
+  .list {
+    grid-template-columns: repeat(8, 1fr);
+
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .list {
+    grid-template-columns: repeat(4, 1fr);
+
+  }
+}
+
+
+@media only screen and (max-width: 500px) {
+  .list {
+    grid-template-columns: repeat(4, 1fr);
+
+  }
+}
+

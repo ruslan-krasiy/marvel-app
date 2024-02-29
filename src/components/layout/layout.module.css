@@ -1,9 +1,17 @@
 .wrapper {
   max-width: 1400px;
-  width: 100;
   margin: 0 auto;
+  padding: 0 48px;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .logo {
+  display: inline-flex;
   width: 130px;
 }

@@ -1,6 +1,7 @@
 import { FC } from "react";
 import useGetAllHeroes from "../hooks/useGetAllHeroes";
-import { Link } from "react-router-dom";
+import SearchHeroes from "../components/search/search";
+import HeroesList from "../components/heroes-list/list";
 
 const Heroes:FC = () => {
   const { data, status } = useGetAllHeroes();
@@ -15,20 +16,8 @@ const Heroes:FC = () => {
 
   return (
     <div>
-      <h1>Heroes Page</h1>
-      <div>
-        <ul>
-          {
-            data.map(hero => (
-              <li key={hero.id}>
-                <Link to={`${hero.id}`}>
-                  {hero.name}
-                </Link>
-              </li>
-            ))
-          }
-        </ul>
-      </div>
+      <SearchHeroes amount={data.length}/>
+      <HeroesList list={data} />
     </div>
   );
 };

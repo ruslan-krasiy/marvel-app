@@ -1,0 +1,30 @@
+.wrapper{
+  padding: 12px 0;
+}
+
+.field{
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+  border-bottom: 1px solid var(--main-color);
+  padding-bottom: 8px;
+}
+
+.input{
+  width: 100%;
+  border: none;
+  line-height: 1.1;
+  font-size: 1rem;
+  outline: none;
+}
+
+.input::placeholder {
+  text-transform: uppercase;
+  color: #aaa;
+}
+
+.result {
+  text-transform: uppercase;
+  font-size: 12px;
+  line-height: 1.1;
+}

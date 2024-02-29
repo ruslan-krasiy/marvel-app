@@ -3,14 +3,19 @@ import classes from "./layout.module.css";
 import { Outlet } from "react-router";
 import Logo from "../../assets/marvel-logo.png";
 import Favorite from "../favorite/favorite";
+import { Link } from "react-router-dom";
 
 const Layout: FC = () => {
   return (
     <>
       <header>
         <Wrapper>
-          <img src={Logo} alt="Logotipo" className={classes.logo}/>
-          <Favorite />
+          <div className={classes.container}>
+            <Link to={"/heroes"} className={classes.logo}>
+              <img src={Logo} alt="Logotipo" />
+            </Link>
+            <Favorite />
+          </div>
         </Wrapper>
       </header>
       <main>

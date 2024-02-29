@@ -6,23 +6,22 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import "./index.css";
-import Layout from "./layout";
 import Heroes from "./views/Heroes";
 import Hero from "./views/Hero";
+import Layout from "./components/layout/layout";
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: "/heroes",
     element: <Layout />,
     children: [
       { index: true, element: <Heroes /> },
-      { path: "hero", children: [
-        {path: ":id", element: <Hero /> }]}
+      { path: ":id", element: <Hero /> }
     ],
   },
   {
     path: "*",
-    element: <Navigate to={"/"} />
+    element: <Navigate to={"/heroes"} />
   }
 ]);
 

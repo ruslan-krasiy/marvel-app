@@ -1,10 +1,4 @@
 .wrapper {
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 0 48px;
-}
-
-.container {
   display: flex;
   flex-direction: row;
   justify-content: space-between;

@@ -9,16 +9,18 @@ const HeroCard:FC<{hero: Hero}> = ({hero}) => {
   const imageUrl = `${hero.thumbnail.path}.${hero.thumbnail.extension}`;
   
   return (
-    <Link className={classes.card} to={String(hero.id)}>
-      <div className={classes["image-container"]}>
+    <div className={classes.card}>
+      <div className={classes.image_container}>
         <img src={imageUrl} alt={`${hero.name} - poster`} className={classes.image}/>
       </div>
       <div className={classes.content}>
-        <p className={classes.name}>{hero.name}</p>
+        <Link className={classes.card_title} to={String(hero.id)}>
+          {hero.name}
+        </Link>
         <FavoriteButton heroId={hero.id} />
         <div className={classes.cut}></div>
       </div>
-    </Link>
+    </div>
   );
 };
 

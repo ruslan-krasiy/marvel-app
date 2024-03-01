@@ -2,6 +2,7 @@ import { FC } from "react";
 import classes from "./banner.module.css";
 import Container from "../container/container";
 import FavoriteButton from "../favorite/favorite-button";
+import TriangleCss from "../triangle/triangle";
 
 interface BannerProps {
   id: number;
@@ -24,6 +25,7 @@ const Banner:FC<BannerProps> = ({id, name, description, avatar}) => {
           </div>
         </div>
       </Container>
+      <TriangleCss size="md" />
     </div>
   );
 };

@@ -6,11 +6,11 @@ import Container from "../components/container/container";
 import Loader from "../components/loader/loader";
 
 const Heroes:FC = () => {
-  const { data, status } = useGetAllHeroes();
+  const { data, isLoading } = useGetAllHeroes();
 
-  console.log(data, status);
+  console.log(data, isLoading);
 
-  if(status === "loading") {
+  if(isLoading) {
     return <Loader />;
   }
 

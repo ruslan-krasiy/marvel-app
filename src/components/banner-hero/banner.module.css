@@ -1,6 +1,7 @@
 .banner {
   background-color: var(--main-color);
   color: var(--typography-color-dark);
+  position: relative;
 }
 
 .wrapper {

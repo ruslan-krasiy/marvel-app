@@ -3,6 +3,7 @@ import { Hero } from "../../../interfaces/hero.interface";
 import classes from "./hero-card.module.css";
 import FavoriteButton from "../../favorite/favorite-button";
 import { Link } from "react-router-dom";
+import TriangleCss from "../../triangle/triangle";
 
 
 const HeroCard:FC<{hero: Hero}> = ({hero}) => {
@@ -18,8 +19,8 @@ const HeroCard:FC<{hero: Hero}> = ({hero}) => {
           {hero.name}
         </Link>
         <FavoriteButton heroId={hero.id} />
-        <div className={classes.cut}></div>
       </div>
+      <TriangleCss />
     </div>
   );
 };

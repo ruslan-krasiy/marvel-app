@@ -1,28 +1,24 @@
 import { useCallback, useEffect, useState } from "react";
 import { Hero } from "../interfaces/hero.interface";
-import { StatusLoader } from "../interfaces/status.interface";
 import { apiGet } from "../api";
 
 interface StateType {
   data: Hero[];
-  status: StatusLoader 
+  isLoading: boolean 
 }
 const useGetAllHeroes = ():StateType => {
   const [state, setState] = useState<StateType>({
     data: [],
-    status: StatusLoader.Loading
+    isLoading: true
   });
 
   const getData = useCallback(async () => {
     
-    const response = await apiGet("characters");
-    let newState:StateType = {data: [], status: StatusLoader.Rejected};
-    
+    const response = await apiGet<Hero[]>("characters");    
     if(response){
-      newState = {data: response, status: StatusLoader.Successed};
+      setState({data: response, isLoading: false});
     }
 
-    setState(newState);
   }, []);
 
   useEffect(()=>{

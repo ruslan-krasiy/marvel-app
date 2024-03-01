@@ -1,17 +1,19 @@
 import { useCallback, useEffect, useState } from "react";
 import { Hero } from "../interfaces/hero.interface";
-import { StatusLoader } from "../interfaces/status.interface";
 import { apiGet } from "../api";
 import { useParams } from "react-router";
+import { Comic } from "../interfaces/comics.interface";
 
 interface StateType {
+  comics: Comic[] | null;
   data: Hero | null;
-  status: StatusLoader 
+  isLoading: boolean; 
 }
 const useGetHero = ():StateType => {
   const [state, setState] = useState<StateType>({
     data: null,
-    status: StatusLoader.Loading
+    comics: null,
+    isLoading: true
   });
 
   const { id } = useParams();
@@ -20,15 +22,12 @@ const useGetHero = ():StateType => {
     if(!id)
       return;
 
-    const response = await apiGet(`characters/${id}`);
-
-    let newState:StateType = {data: null, status: StatusLoader.Rejected};
+    const {hero, comics} = await getHeroData(id);
     
-    if(response){
-      newState = {data: response[0], status: StatusLoader.Successed};
+    if(hero && comics){
+      setState({data: hero[0], isLoading: false, comics: comics});
     }
-
-    setState(newState);
+    
   }, []);
 
   useEffect(()=>{
@@ -37,5 +36,15 @@ const useGetHero = ():StateType => {
 
   return state;
 };
+
+async function getHeroData(id: string):Promise<{hero: Hero[], comics: Comic[]}> {
+  const responseHero = await apiGet<Hero[]>(`characters/${id}`);
+  const responseComics = await apiGet<Comic[]>(`characters/${id}/comics`);
+
+  return {
+    hero: responseHero,
+    comics: responseComics
+  };
+}
 
 export default useGetHero;

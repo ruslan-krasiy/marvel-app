@@ -1,18 +1,29 @@
 import { FC } from "react";
 import useGetHero from "../hooks/useGetHero";
+import Banner from "../components/banner-hero/banner";
+import HeroComics from "../components/comics/comics";
+import Loader from "../components/loader/loader";
 
 const Hero:FC = () => {
-  const  {data, status} = useGetHero();
+  const {data, isLoading, comics} = useGetHero();
 
-  if(status === "loading"){
-    return <div>Loading...</div>;
-  }else if(status === "rejected" || !data){
-    return <div>Not found</div>;
+  if(isLoading){
+    return <Loader />;
   }
 
+  if(!data){
+    return <div>Not found</div>;
+  }
+  
   return (
     <div>
-      <h1>{data.name}</h1>
+      <Banner 
+        avatar={`${data.thumbnail.path}.${data.thumbnail.extension}`}
+        description={data.description}
+        id={data.id}
+        name={data.name}
+      />
+      { comics && <HeroComics comics={comics} />}
     </div>
   );
 };

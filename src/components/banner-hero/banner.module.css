@@ -1,0 +1,35 @@
+.banner {
+  background-color: var(--main-color);
+  color: var(--typography-color-dark);
+  position: relative;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: row;
+  gap: 3rem;
+}
+
+.avatar{
+  width: 320px;
+}
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex-grow: 1;
+}
+.banner_title {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.banner_title h1 {
+  margin: 0;
+  font-size: 40px;
+}
+.description {
+  font-size: 1rem;
+}

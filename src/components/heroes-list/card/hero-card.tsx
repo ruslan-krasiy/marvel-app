@@ -15,7 +15,7 @@ const HeroCard:FC<{hero: Hero}> = ({hero}) => {
         <img src={imageUrl} alt={`${hero.name} - poster`} className={classes.image}/>
       </div>
       <div className={classes.content}>
-        <Link className={classes.card_title} to={String(hero.id)}>
+        <Link className={classes.card_title} to={`/heroes/${hero.id}`}>
           {hero.name}
         </Link>
         <FavoriteButton heroId={hero.id} />

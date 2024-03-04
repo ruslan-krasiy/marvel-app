@@ -1,21 +1,23 @@
 import { FC } from "react";
-import useGetAllHeroes from "../hooks/useGetAllHeroes";
 import HeroesList from "../components/heroes-list/list";
 import Container from "../components/container/container";
 import Loader from "../components/loader/loader";
+import useGetAllFavoritsHeroes from "../hooks/useGetAllFAvoritsHeroes";
 
-const Heroes:FC = () => {
-  const { data, isLoading } = useGetAllHeroes();
-  
+const Favorits:FC = () => {
+  const { data, isLoading } = useGetAllFavoritsHeroes();
+
+
   if(isLoading) {
     return <Loader />;
   }
-
+  
   return (
     <Container>
+      <h2>Favorites</h2>
       <HeroesList list={data} />
     </Container>
   );
 };
 
-export default Heroes;
+export default Favorits;

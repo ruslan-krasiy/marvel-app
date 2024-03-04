@@ -7,7 +7,7 @@ import { getComicSaleDate } from "../../utils/common";
 const HeroComics:FC<{comics: Comic[]}> = ({comics}) => {
   return(
     <Container size="md">
-      <h2 className={classes.title}>Comics</h2>
+      <h2>Comics</h2>
       {
         comics.length > 0 
           ? (

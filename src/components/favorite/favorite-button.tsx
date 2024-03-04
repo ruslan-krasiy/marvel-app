@@ -1,17 +1,25 @@
 import { FC } from "react";
 import RedHeart from "../../assets/icons/heart-red.svg";
 import WhiteHeart from "../../assets/icons/heart-outline.svg";
-import classes from "./button.module.css";
+import { useAppContext } from "../../context";
+import classes from "./favorite.module.css";
 
 const FavoriteButton:FC<{heroId: number, size?: number}> = ({heroId, size}) => {
+  const {favorits, handlerFavorits} = useAppContext();
 
   const handlerClick = () => {
-    console.log(heroId);
+    if(handlerFavorits){
+      handlerFavorits(heroId);
+    }
   };
 
+  const isFavorite = favorits.includes(heroId);
+  const imageSrc = isFavorite ? RedHeart : WhiteHeart;
+  const title = isFavorite ? "Remove from favorits" : "Add to favorits";
+  const imgAlt = isFavorite ? "My favorite hero" : "I don't like this hero";
   return(
-    <button onClick={handlerClick} className={classes.favorite_btn} title="Add to favorite">
-      <img src={WhiteHeart} alt="Not favorite" width={size || 12} />
+    <button onClick={handlerClick} className={classes.favorite_btn} title={title}>
+      <img src={imageSrc} alt={imgAlt} width={size || 12} />
     </button>
   );
 };

@@ -1,33 +1,42 @@
 # Marvel App
+[https://ruslan-krasiy-marvel-app.vercel.app/heroes](https://ruslan-krasiy-marvel-app.vercel.app/heroes)
 
-## Run
 
-```
-  yarn install
-  npm run dev
-```
-
-## Production
+## Run dev mode
 
 ```
-  npm run build
+yarn install
+npm run dev
+```
+
+## Run in production mode
+
+```
+npm run build
 ```
 
 ## Test
 
 ```
-  npm run test
+npm run test
 ```
 
 ## App Router
 
-
 #### Heroes page
-[http://localhost:5173/heroes](http://localhost:5173/heroes)
+[https://ruslan-krasiy-marvel-app.vercel.app/heroes/](https://ruslan-krasiy-marvel-app.vercel.app/heroes)
 
 
 #### Favorites page
-[http://localhost:5173/heroes/fevorits](http://localhost:5173/heroes/favorits)
+[https://ruslan-krasiy-marvel-app.vercel.app/heroes/fevorits](https://ruslan-krasiy-marvel-app.vercel.app/heroes/favorits)
 
 #### Hero page
-[http://localhost:5173/heroes/1010354](http://localhost:5173/heroes/1010354)
+[https://ruslan-krasiy-marvel-app.vercel.app/heroes/1010354](https://ruslan-krasiy-marvel-app.vercel.app/heroes/1010354)
+
+## Api Key
+
+```
+//src/api/index.ts
+const API = "https://gateway.marvel.com:443/v1/public";
+const API_KEY = "ts=1&apikey=a2fa95e3e927058d80203ddbbe8269f3&hash=0e74afce0916eb27e1560c6ad8b3a870";
+```

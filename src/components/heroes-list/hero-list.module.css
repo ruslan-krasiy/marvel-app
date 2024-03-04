@@ -13,7 +13,17 @@
   padding-bottom: 8px;
 }
 
-.search_input{
+.search_input {
+  padding: 0;
+  outline: none;
+  border: none;
+}
+
+.search_input label{
+  display: none;
+}
+
+.search_input input{
   width: 100%;
   border: none;
   line-height: 1.1;
@@ -21,7 +31,7 @@
   outline: none;
 }
 
-.search_input::placeholder {
+.search_input input::placeholder {
   text-transform: uppercase;
   color: #aaa;
 }

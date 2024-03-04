@@ -1,31 +1,22 @@
-import { useEffect, useState } from "react";
+import { useMemo, useState } from "react";
 import { Hero } from "../interfaces/hero.interface";
 
 interface HookState {
   results: Hero[];
-  searchHero: (a: string) => void;
+  searchTerm: string;
+  setSearchTerm: (a: string) => void;
 }
 const useSearchHero = (heroes: Hero[]):HookState => {
-  const [state, setState] = useState<Hero[]>([]);
+  const [searchTerm, setSearchTerm] = useState<string>("");
 
-  useEffect(()=>{
-    setState(heroes);
-  },[heroes]);
-
-  const searchHero = (value: string) => {
-    if(value.length === 0){
-      setState(heroes);
-    }else{
-      const name = value.toLowerCase();
-      const results = heroes.filter(hero => hero.name.toLowerCase().indexOf(name) > -1);
-  
-      setState(results);
-    }
-  };
+  const results = useMemo(
+    () => heroes.filter(hero => hero.name.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1)
+    , [heroes, searchTerm]);
 
   return {
-    results: state,
-    searchHero
+    results,
+    searchTerm,
+    setSearchTerm
   };
 };
 

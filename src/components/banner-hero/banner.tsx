@@ -13,7 +13,7 @@ interface BannerProps {
 const Banner:FC<BannerProps> = ({id, name, description, avatar}) => {
   return (
     <div className={classes.banner}>
-      <Container size={"md"}>
+      <Container size={"md"} dense>
         <div className={classes.wrapper}>
           <img src={avatar} alt={`Avatar ${name}`} className={classes.avatar}/>
           <div className={classes.content}>

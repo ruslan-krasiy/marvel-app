@@ -23,17 +23,19 @@ const useGetAllFavoritsHeroes = ():StateType => {
     
     const results = [];
     for(const heroId of favorits){
-      const hero = await apiGet<Hero[]>(`characters/${heroId}`);
-      if(hero){
-        results.push(hero[0]);
+      try{
+        const hero = await apiGet<Hero[]>(`characters/${heroId}`);
+        if(hero){
+          results.push(hero[0]);
+        }
+      }catch(e){
+        console.error(e);
       }
     }  
     
-
     if(results.length > 0){
       setState({data: results, isLoading: false});
     }
-
   }, []);
 
   useEffect(()=>{

@@ -7,7 +7,7 @@
     "dev": "vite --open",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
-    "test": "vitest --root src/",
+    "test": "vitest",
     "build:dev": "NODE_ENV=development tsc && vite build --mode development",
     "build": "tsc && vite build"
   },

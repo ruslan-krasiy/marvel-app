@@ -9,6 +9,8 @@ import "./index.css";
 import Heroes from "./views/Heroes";
 import Hero from "./views/Hero";
 import Layout from "./components/layout/layout";
+import ProvideAppContext from "./context";
+import Favorits from "./views/Favorits";
 
 const router = createBrowserRouter([
   {
@@ -16,6 +18,7 @@ const router = createBrowserRouter([
     element: <Layout />,
     children: [
       { index: true, element: <Heroes /> },
+      { path: "favorits", element: <Favorits /> },
       { path: ":id", element: <Hero /> }
     ],
   },
@@ -27,6 +30,8 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <ProvideAppContext>
+      <RouterProvider router={router} />
+    </ProvideAppContext>
   </React.StrictMode>
 );

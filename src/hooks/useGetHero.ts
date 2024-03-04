@@ -3,17 +3,20 @@ import { Hero } from "../interfaces/hero.interface";
 import { apiGet } from "../api";
 import { useParams } from "react-router";
 import { Comic } from "../interfaces/comics.interface";
+import { RequestError } from "../utils/error";
 
 interface StateType {
   comics: Comic[] | null;
   data: Hero | null;
   isLoading: boolean; 
+  error: string | null;
 }
 const useGetHero = ():StateType => {
   const [state, setState] = useState<StateType>({
     data: null,
     comics: null,
-    isLoading: true
+    isLoading: true,
+    error: null
   });
 
   const { id } = useParams();
@@ -22,11 +25,17 @@ const useGetHero = ():StateType => {
     if(!id)
       return;
 
-    const {hero, comics} = await getHeroData(id);
+    try{
+      const {hero, comics} = await getHeroData(id);
     
-    if(hero && comics){
-      setState({data: hero[0], isLoading: false, comics: comics});
+      if(hero && comics){
+        setState({data: hero[0], isLoading: false, comics: comics, error: null});
+      }
+    }catch(e){
+      const error = e as RequestError;
+      setState({...state, isLoading: false, error: error.message});
     }
+
     
   }, []);
 

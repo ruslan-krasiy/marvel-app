@@ -1,3 +1,7 @@
+.favorite_count{
+  color: var(--typography-color-dark);
+}
+
 .favorite_btn{
   outline: none;
   border: none;
@@ -7,4 +11,10 @@
   display: flex;
   justify-content: center;
   min-width: 23px;
+}
+
+.wrapper{
+  display: flex;
+  gap: .5rem;
+  align-items: center;
 }

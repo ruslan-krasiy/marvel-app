@@ -1,24 +1,15 @@
-import { FC, useRef } from "react";
+import { FC } from "react";
 import { Hero } from "../../interfaces/hero.interface";
 import HeroCard from "./card/hero-card";
 import classes from "./hero-list.module.css";
 import useSearchHero from "../../hooks/useSearchHero";
 import SearchIcon from "../../assets/icons/search.svg";
 
-const HeroesList: FC<{list: Hero[]}> = ({list}) => {
-  const {results, searchHero } = useSearchHero(list);
-  const inputRef = useRef<HTMLInputElement | null>(null);
+const HeroesList: FC<{ list: Hero[] }> = ({ list }) => {
+  const { results, setSearchTerm, searchTerm } = useSearchHero(list);
 
-  const handler = (event: React.KeyboardEvent<HTMLInputElement>) => {
-    const inputTarget = inputRef.current;
-
-    if(!inputTarget)
-      return;
-
-    if(event.key === "Enter"){
-      searchHero(inputTarget.value);
-    }
-    
+  const handler = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchTerm(event.target.value);
   };
 
   return (
@@ -26,13 +17,18 @@ const HeroesList: FC<{list: Hero[]}> = ({list}) => {
       <div className={classes.search_wrapper}>
         <div className={classes.search_field}>
           <img src={SearchIcon} alt="Sarch icon" />
-          <input 
-            ref={inputRef}
-            onKeyDown={handler}
-            type="text" 
-            placeholder="Search a character..."
-            className={classes.search_input}
-          />
+          <form>
+            <label htmlFor="hero_name">Hero name</label>
+            <input
+              id="hero_name"
+              name="Hero name"
+              value={searchTerm}
+              onChange={handler}
+              type="text"
+              placeholder="Search a character..."
+              className={classes.search_input}
+            />
+          </form>
         </div>
         <p className={classes.search_result}>{results.length} Results</p>
       </div>

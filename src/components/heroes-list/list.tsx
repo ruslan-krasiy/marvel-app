@@ -17,7 +17,7 @@ const HeroesList: FC<{ list: Hero[] }> = ({ list }) => {
       <div className={classes.search_wrapper}>
         <div className={classes.search_field}>
           <img src={SearchIcon} alt="Sarch icon" />
-          <form>
+          <fieldset className={classes.search_input}>
             <label htmlFor="hero_name">Hero name</label>
             <input
               id="hero_name"
@@ -26,9 +26,8 @@ const HeroesList: FC<{ list: Hero[] }> = ({ list }) => {
               onChange={handler}
               type="text"
               placeholder="Search a character..."
-              className={classes.search_input}
             />
-          </form>
+          </fieldset>
         </div>
         <p className={classes.search_result}>{results.length} Results</p>
       </div>
